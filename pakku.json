@@ -1,0 +1,14 @@
+{
+    "name": "Warfactory-lite",
+    "version": "0.0.1",
+    "overrides": [
+        "overrides/pointblank",
+        "overrides/config",
+        "overrides/kubejs"
+    ],
+    "client_overrides": [
+        "overrides/fancymenu_data",
+        "overrides/datapacks",
+        "overrides/options.txt"
+    ]
+}
