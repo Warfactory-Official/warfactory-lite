@@ -1458,6 +1458,42 @@
             ]
         },
         {
+            "pakku_id": "pBMh7C99u3AZzRmx",
+            "type": "MOD",
+            "slug": {
+                "curseforge": "modularui"
+            },
+            "name": {
+                "curseforge": "ModularUI"
+            },
+            "id": {
+                "curseforge": "624243"
+            },
+            "files": [
+                {
+                    "type": "curseforge",
+                    "file_name": "modularui-mc1.20.1-3.3.0.jar",
+                    "mc_versions": [
+                        "1.20.1"
+                    ],
+                    "loaders": [
+                        "forge"
+                    ],
+                    "release_type": "alpha",
+                    "url": "https://edge.forgecdn.net/files/8118/122/modularui-mc1.20.1-3.3.0.jar",
+                    "id": "8118122",
+                    "parent_id": "624243",
+                    "hashes": {
+                        "sha1": "7f4ac9b3ea2c89d9e1fea93dee3a5f60841b05ad",
+                        "md5": "10b27a303be6a256554dc9fa879e5f4e"
+                    },
+                    "required_dependencies": [],
+                    "size": 2274291,
+                    "date_published": "2026-05-20T10:43:28.277Z"
+                }
+            ]
+        },
+        {
             "pakku_id": "MBSrGzp11w1v4j9s",
             "type": "MOD",
             "slug": {
@@ -1981,6 +2017,47 @@
                     "required_dependencies": [],
                     "size": 26647636,
                     "date_published": "2026-06-19T22:20:44.060Z"
+                }
+            ]
+        },
+        {
+            "pakku_id": "QHPhdj6AolP30IHI",
+            "pakku_links": [
+                "pBMh7C99u3AZzRmx"
+            ],
+            "type": "MOD",
+            "slug": {
+                "curseforge": "warforge-factions-remaintained"
+            },
+            "name": {
+                "curseforge": "Warforge Factions: Remaintained"
+            },
+            "id": {
+                "curseforge": "1340172"
+            },
+            "files": [
+                {
+                    "type": "curseforge",
+                    "file_name": "warforge-remaintained-2.1.0.jar",
+                    "mc_versions": [
+                        "1.20.1"
+                    ],
+                    "loaders": [
+                        "forge"
+                    ],
+                    "release_type": "release",
+                    "url": "https://edge.forgecdn.net/files/8304/936/warforge-remaintained-2.1.0.jar",
+                    "id": "8304936",
+                    "parent_id": "1340172",
+                    "hashes": {
+                        "sha1": "1a475ebc130468cdad97664522097af35a5727b2",
+                        "md5": "fb64ee18ef5e587d105e951e75b94c65"
+                    },
+                    "required_dependencies": [
+                        "624243"
+                    ],
+                    "size": 993598,
+                    "date_published": "2026-06-23T07:08:40.550Z"
                 }
             ]
         },
