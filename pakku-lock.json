@@ -1116,6 +1116,43 @@
             ]
         },
         {
+            "pakku_id": "I5VrUy6Gog5ui9dx",
+            "type": "MOD",
+            "slug": {
+                "curseforge": "hunger-strike"
+            },
+            "name": {
+                "curseforge": "Hunger Strike"
+            },
+            "id": {
+                "curseforge": "75334"
+            },
+            "files": [
+                {
+                    "type": "curseforge",
+                    "file_name": "HungerStrike-1.20.1-8.0.0.jar",
+                    "mc_versions": [
+                        "1.20.1"
+                    ],
+                    "loaders": [
+                        "neoforge",
+                        "forge"
+                    ],
+                    "release_type": "release",
+                    "url": "https://edge.forgecdn.net/files/5574/481/HungerStrike-1.20.1-8.0.0.jar",
+                    "id": "5574481",
+                    "parent_id": "75334",
+                    "hashes": {
+                        "sha1": "88bc48637001231d8b7e37c5ae6805c4190e39bf",
+                        "md5": "e045f46f90cbfbd60565fd451a4d92d5"
+                    },
+                    "required_dependencies": [],
+                    "size": 33579,
+                    "date_published": "2024-07-28T14:05:03.437Z"
+                }
+            ]
+        },
+        {
             "pakku_id": "qUyRJs2hLVn31PQj",
             "type": "MOD",
             "slug": {
@@ -1380,6 +1417,42 @@
                     "required_dependencies": [],
                     "size": 982465,
                     "date_published": "2026-06-15T23:03:10.743Z"
+                }
+            ]
+        },
+        {
+            "pakku_id": "MBSrGzp11w1v4j9s",
+            "type": "MOD",
+            "slug": {
+                "curseforge": "open-persistence"
+            },
+            "name": {
+                "curseforge": "Open Persistence"
+            },
+            "id": {
+                "curseforge": "1339925"
+            },
+            "files": [
+                {
+                    "type": "curseforge",
+                    "file_name": "openpersistence-1.20.1-Forge-1.0.0.jar",
+                    "mc_versions": [
+                        "1.20.1"
+                    ],
+                    "loaders": [
+                        "forge"
+                    ],
+                    "release_type": "release",
+                    "url": "https://edge.forgecdn.net/files/8292/468/openpersistence-1.20.1-Forge-1.0.0.jar",
+                    "id": "8292468",
+                    "parent_id": "1339925",
+                    "hashes": {
+                        "sha1": "6e9d510bdf3a34cf670d43c9d77fc34b59a78403",
+                        "md5": "3292b5845aca96f726be8fe2425a40f4"
+                    },
+                    "required_dependencies": [],
+                    "size": 28530,
+                    "date_published": "2026-06-21T10:45:22.763Z"
                 }
             ]
         },
@@ -1835,6 +1908,42 @@
                     ],
                     "size": 169451,
                     "date_published": "2024-02-24T19:01:32.397Z"
+                }
+            ]
+        },
+        {
+            "pakku_id": "VM2wdmFiP3f33Wfu",
+            "type": "MOD",
+            "slug": {
+                "curseforge": "warfactory-ultimate-weight"
+            },
+            "name": {
+                "curseforge": "Warfactory Ultimate Weight"
+            },
+            "id": {
+                "curseforge": "1581277"
+            },
+            "files": [
+                {
+                    "type": "curseforge",
+                    "file_name": "wfweight-1.20.1-Forge-1.0.0.jar",
+                    "mc_versions": [
+                        "1.20.1"
+                    ],
+                    "loaders": [
+                        "forge"
+                    ],
+                    "release_type": "release",
+                    "url": "https://edge.forgecdn.net/files/8282/888/wfweight-1.20.1-Forge-1.0.0.jar",
+                    "id": "8282888",
+                    "parent_id": "1581277",
+                    "hashes": {
+                        "sha1": "55b8732ea252bcb6811a22c990fc133ecaaa2ac7",
+                        "md5": "52f510bfbba76852cfb91a5e91c9bcae"
+                    },
+                    "required_dependencies": [],
+                    "size": 26647636,
+                    "date_published": "2026-06-19T22:20:44.060Z"
                 }
             ]
         },
