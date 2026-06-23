@@ -1347,6 +1347,43 @@
             ]
         },
         {
+            "pakku_id": "YmfFLIBsDfg4G4jW",
+            "type": "MOD",
+            "slug": {
+                "curseforge": "minemenu"
+            },
+            "name": {
+                "curseforge": "MineMenu"
+            },
+            "id": {
+                "curseforge": "222378"
+            },
+            "files": [
+                {
+                    "type": "curseforge",
+                    "file_name": "MineMenu-1.20.1-1.12.3.jar",
+                    "mc_versions": [
+                        "1.20.1"
+                    ],
+                    "loaders": [
+                        "neoforge",
+                        "forge"
+                    ],
+                    "release_type": "release",
+                    "url": "https://edge.forgecdn.net/files/4938/47/MineMenu-1.20.1-1.12.3.jar",
+                    "id": "4938047",
+                    "parent_id": "222378",
+                    "hashes": {
+                        "sha1": "8cc736b3965e4d101ddbc3724c42ae9559978572",
+                        "md5": "b0fb10ab8323f92d7d89fda0d1d748f5"
+                    },
+                    "required_dependencies": [],
+                    "size": 260744,
+                    "date_published": "2023-12-07T23:39:57.993Z"
+                }
+            ]
+        },
+        {
             "pakku_id": "8C9AMAuTTCRNUi1Y",
             "type": "MOD",
             "slug": {
