@@ -2650,6 +2650,7 @@
             "id": {
                 "curseforge": "1218165"
             },
+            "update_strategy": "NONE",
             "files": [
                 {
                     "type": "curseforge",
@@ -2879,6 +2880,7 @@
             "id": {
                 "curseforge": "1028108"
             },
+            "update_strategy": "NONE",
             "files": [
                 {
                     "type": "curseforge",
@@ -2989,6 +2991,7 @@
             "id": {
                 "github": "1213132556"
             },
+            "update_strategy": "NONE",
             "files": [
                 {
                     "type": "github",
