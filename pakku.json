@@ -10,5 +10,16 @@
         "overrides/fancymenu_data",
         "overrides/datapacks",
         "overrides/options.txt"
-    ]
+    ],
+    "projects": {
+        "timeless-and-classics-zero": {
+            "update_strategy": "NONE"
+        },
+        "superb-warfare": {
+            "update_strategy": "NONE"
+        },
+        "Ultimate-Weight": {
+            "update_strategy": "NONE"
+        }
+    }
 }
