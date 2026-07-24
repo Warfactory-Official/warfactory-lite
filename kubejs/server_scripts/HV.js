@@ -2,13 +2,49 @@
 
 // Visit the wiki for more info - https://kubejs.com/
 ServerEvents.recipes(event => {
+    const id = name => `wfcore:${name}`;
 
-event.recipes.gtceu.chemical_reactor("kubejs:advanced_aircraft_metal")
-.inputFluids('gtceu:oxygen 3000')
-.inputFluids('gtceu:hydrogen 3000')
-.outputFluids('gtceu:advanced_aircraft_metal 2000')
-.duration(200)
-.EUt(256)
+    const HVAssemblerRecipes = (item, mod, output, count, fluid, eutick, circuit, dur) => {
+        count = count || 1;
+        fluid = fluid || null;
+
+        let recipe = event.recipes.gtceu.assembler(id(`${output}`))
+            .itemInputs(item)
+            .itemOutputs(`${count}x ${mod}:${output}`)
+            .duration(dur)
+            .EUt(eutick);
+
+        if (circuit) {
+            recipe.circuit(circuit);
+        }
+
+        if (fluid) {
+            recipe.inputFluids(`${fluid}`);
+        }
+    };
+    HVAssemblerRecipes(['2x gtceu:hv_assembler', '2x gtceu:industrial_steam_casing', '6x gtceu:hv_robot_arm', '6x gtceu:hv_conveyor_module', '6x gtceu:hv_electric_motor', '16x gtceu:electrum_quadruple_cable', '2x #gtceu:circuits/iv', '4x #gtceu:circuits/ev', '8x #gtceu:circuits/hv'], 'wfcore', 'missile_factory', 1, 'gtceu:polytetrafluoroethylene 1152', 480, null, 1800);
+    HVAssemblerRecipes(['3x gtceu:hv_robot_arm', '4x #gtceu:circuits/iv', '6x wfcore:galvanized_steel_frame', '2x wfcore:machine_casing_turbine_titanium', '3x gtceu:stainless_steel_gearbox', '2x gtceu:titanium_gear'], 'wfcore', 'tank_assembly', 1, 'gtceu:polytetrafluoroethylene 864', 480, null, 900);
+    HVAssemblerRecipes(['3x gtceu:hv_field_generator', '2x gtceu:hv_conveyor_module', '2x gtceu:hv_emitter', '2x gtceu:hv_sensor', '4x gtceu:industrial_steam_casing', '4x gtceu:black_steel_frame', '2x gtceu:data_stick', '2x #gtceu:circuits/iv'], 'wfcore', 'missile_launcher', 1, 'gtceu:polytetrafluoroethylene 1152', 480, null, 1800);
+    HVAssemblerRecipes(['2x gtceu:mv_robot_arm', '2x #gtceu:circuits/ev', '2x wfcore:aluminium_sheet_casing', '2x gtceu:stainless_steel_gear', '2x gtceu:mv_conveyor_module', '3x gtceu:black_steel_frame', '3x gtceu:black_large_metal_sheet'], 'wfcore', 'heavy_vehicle_depot', 1, 'gtceu:polyethylene 576', 120, null, 600);
+})
+
+
+
+ServerEvents.recipes(event => {
+    event.recipes.gtceu.chemical_reactor("kubejs:advanced_aircraft_metal")
+        .inputFluids('gtceu:oxygen 3000')
+        .inputFluids('gtceu:hydrogen 3000')
+        .outputFluids('gtceu:advanced_aircraft_metal 2000')
+        .duration(200)
+        .EUt(256)
+
+    event.recipes.gtceu.large_chemical_reactor("kubejs:nether_star_dust")
+        .itemInputs('15x gtceu:lapotron_dust', '32x minecraft:glowstone_dust', '5x gtceu:ender_pearl_dust')
+        .inputFluids('gtceu:aqua_regia 3000')
+        .itemOutputs('1x gtceu:nether_star_dust')
+        .duration(1800)
+        .EUt(1920)
+
 
     // =========================
     // GUNS - progression brief implementation (warfactory-lite-gun-progression-notes.md)
@@ -27,15 +63,15 @@ event.recipes.gtceu.chemical_reactor("kubejs:advanced_aircraft_metal")
     modernPistols2.forEach(g => {
         event.remove({ output: Item.of('tacz:modern_kinetic_gun', g.nbt) });
         event.recipes.gtceu.assembler(`modern_pistol2_${g.circuit}`)
-        .itemInputs(
-            Item.of('gtceu:gun_metal_ingot', 1),
-                    Item.of('gtceu:polytetrafluoroethylene_plate', 1),
-                    Item.of('gtceu:stainless_steel_gear', 1)
-        )
-        .itemOutputs(Item.of('tacz:modern_kinetic_gun', 1, g.nbt))
-        .circuit(g.circuit)
-        .duration(200)
-        .EUt(512);
+            .itemInputs(
+                Item.of('gtceu:gun_metal_ingot', 1),
+                Item.of('gtceu:polytetrafluoroethylene_plate', 1),
+                Item.of('gtceu:stainless_steel_gear', 1)
+            )
+            .itemOutputs(Item.of('tacz:modern_kinetic_gun', 1, g.nbt))
+            .circuit(g.circuit)
+            .duration(200)
+            .EUt(512);
     });
 
     // Modern SMGs
@@ -49,15 +85,15 @@ event.recipes.gtceu.chemical_reactor("kubejs:advanced_aircraft_metal")
     modernSmgs.forEach(g => {
         event.remove({ output: Item.of('tacz:modern_kinetic_gun', g.nbt) });
         event.recipes.gtceu.assembler(`modern_smg_${g.circuit}`)
-        .itemInputs(
-            Item.of('gtceu:gun_metal_ingot', 1),
-                    Item.of('gtceu:polytetrafluoroethylene_plate', 2),
-                    Item.of('gtceu:stainless_steel_gear', 1)
-        )
-        .itemOutputs(Item.of('tacz:modern_kinetic_gun', 1, g.nbt))
-        .circuit(g.circuit)
-        .duration(200)
-        .EUt(512);
+            .itemInputs(
+                Item.of('gtceu:gun_metal_ingot', 1),
+                Item.of('gtceu:polytetrafluoroethylene_plate', 2),
+                Item.of('gtceu:stainless_steel_gear', 1)
+            )
+            .itemOutputs(Item.of('tacz:modern_kinetic_gun', 1, g.nbt))
+            .circuit(g.circuit)
+            .duration(200)
+            .EUt(512);
     });
 
     // Modern rifles - this is where gun_metal_ingot finally gets consumed at scale
@@ -77,16 +113,16 @@ event.recipes.gtceu.chemical_reactor("kubejs:advanced_aircraft_metal")
     modernRifles2.forEach(g => {
         event.remove({ output: Item.of('tacz:modern_kinetic_gun', g.nbt) });
         event.recipes.gtceu.assembler(`modern_rifle2_${g.circuit}`)
-        .itemInputs(
-            Item.of('gtceu:gun_metal_ingot', 2),
-                    Item.of('gtceu:polytetrafluoroethylene_plate', 2),
-                    Item.of('gtceu:stainless_steel_gear', 1),
-                    'kubejs:heavy_barrel_steel'
-        )
-        .itemOutputs(Item.of('tacz:modern_kinetic_gun', 1, g.nbt))
-        .circuit(g.circuit)
-        .duration(400)
-        .EUt(512);
+            .itemInputs(
+                Item.of('gtceu:gun_metal_ingot', 2),
+                Item.of('gtceu:polytetrafluoroethylene_plate', 2),
+                Item.of('gtceu:stainless_steel_gear', 1),
+                'kubejs:heavy_barrel_steel'
+            )
+            .itemOutputs(Item.of('tacz:modern_kinetic_gun', 1, g.nbt))
+            .circuit(g.circuit)
+            .duration(400)
+            .EUt(512);
     });
 
     // Modern shotguns
@@ -97,15 +133,15 @@ event.recipes.gtceu.chemical_reactor("kubejs:advanced_aircraft_metal")
     modernShotguns.forEach(g => {
         event.remove({ output: Item.of('tacz:modern_kinetic_gun', g.nbt) });
         event.recipes.gtceu.assembler(`modern_shotgun_${g.circuit}`)
-        .itemInputs(
-            Item.of('gtceu:gun_metal_ingot', 1),
-                    Item.of('gtceu:polytetrafluoroethylene_plate', 2),
-                    Item.of('gtceu:stainless_steel_gear', 1)
-        )
-        .itemOutputs(Item.of('tacz:modern_kinetic_gun', 1, g.nbt))
-        .circuit(g.circuit)
-        .duration(200)
-        .EUt(512);
+            .itemInputs(
+                Item.of('gtceu:gun_metal_ingot', 1),
+                Item.of('gtceu:polytetrafluoroethylene_plate', 2),
+                Item.of('gtceu:stainless_steel_gear', 1)
+            )
+            .itemOutputs(Item.of('tacz:modern_kinetic_gun', 1, g.nbt))
+            .circuit(g.circuit)
+            .duration(200)
+            .EUt(512);
     });
 
     // Modern MG / launchers - fn_evolys is a true belt-fed MG (no explosive input);
@@ -117,16 +153,16 @@ event.recipes.gtceu.chemical_reactor("kubejs:advanced_aircraft_metal")
     modernMg.forEach(g => {
         event.remove({ output: Item.of('tacz:modern_kinetic_gun', g.nbt) });
         event.recipes.gtceu.assembler(`modern_mg_${g.circuit}`)
-        .itemInputs(
-            Item.of('gtceu:gun_metal_ingot', 3),
-                    Item.of('gtceu:polytetrafluoroethylene_plate', 2),
-                    Item.of('gtceu:stainless_steel_gear', 2),
-                    'kubejs:heavy_barrel_damascus'
-        )
-        .itemOutputs(Item.of('tacz:modern_kinetic_gun', 1, g.nbt))
-        .circuit(g.circuit)
-        .duration(600)
-        .EUt(512);
+            .itemInputs(
+                Item.of('gtceu:gun_metal_ingot', 3),
+                Item.of('gtceu:polytetrafluoroethylene_plate', 2),
+                Item.of('gtceu:stainless_steel_gear', 2),
+                'kubejs:heavy_barrel_damascus'
+            )
+            .itemOutputs(Item.of('tacz:modern_kinetic_gun', 1, g.nbt))
+            .circuit(g.circuit)
+            .duration(600)
+            .EUt(512);
     });
 
     const modernLaunchers = [
@@ -136,16 +172,16 @@ event.recipes.gtceu.chemical_reactor("kubejs:advanced_aircraft_metal")
     modernLaunchers.forEach(g => {
         event.remove({ output: Item.of('tacz:modern_kinetic_gun', g.nbt) });
         event.recipes.gtceu.assembler(`modern_launcher_${g.circuit}`)
-        .itemInputs(
-            Item.of('gtceu:gun_metal_ingot', 2),
-                    Item.of('gtceu:polytetrafluoroethylene_plate', 1),
-                    Item.of('gtceu:stainless_steel_gear', 1),
-                    Item.of('gtceu:dynamite', 2)
-        )
-        .itemOutputs(Item.of('tacz:modern_kinetic_gun', 1, g.nbt))
-        .circuit(g.circuit)
-        .duration(400)
-        .EUt(512);
+            .itemInputs(
+                Item.of('gtceu:gun_metal_ingot', 2),
+                Item.of('gtceu:polytetrafluoroethylene_plate', 1),
+                Item.of('gtceu:stainless_steel_gear', 1),
+                Item.of('gtceu:dynamite', 2)
+            )
+            .itemOutputs(Item.of('tacz:modern_kinetic_gun', 1, g.nbt))
+            .circuit(g.circuit)
+            .duration(400)
+            .EUt(512);
     });
 
-})
+});
