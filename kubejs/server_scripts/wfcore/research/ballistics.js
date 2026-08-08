@@ -67,7 +67,7 @@ ServerEvents.recipes(event => {
         .description('WW-era rifle and pistol calibres.')
         .requires('infantry_munitions_1')
     .itemPerRun(Item.of('gtceu:steel_plate', 10))
-    .itemPerRun(Item.of('kubejs:bullet_casing_large', 10))
+    .itemPerRun(Item.of('kubejs:bullet_casing_small', 10))
         .runs(10).ticksPerRun(300).eut(EU_LV).cwuPerRun(0)
         .unlocks(
             Item.of('tacz:ammo', '{AmmoId:"tacz:792x57"}'),
