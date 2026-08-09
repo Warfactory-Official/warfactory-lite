@@ -57,7 +57,7 @@ ServerEvents.recipes(event => {
     event.recipes.gtceu.assembler('kubejs:stock_steel')
     .itemInputs('gtceu:steel_plate')
     .itemOutputs(Item.of('kubejs:stock_steel'))
-    .circuit(22)
+    .circuit(32)
     .duration(200)
     .EUt(30);
 

@@ -5,10 +5,12 @@
 // weapons_system) at LV/MV/HV/EV are each gated on their own node in the independent
 // component tree — WFResearch.condition('veh_comp_<tier>_<part>'), defined in
 // startup_scripts/vehicle_research.js on the "Ground vehicles" tab.
-// The AVIATION parts (air_frame, wing, rotor, cockpit) gate on 'air_comp_<tier>_<part>'.
-// EVERY IV recipe gates on the retired-but-present 'veh_iv' node -> those FAIL OPEN
-// (ungated). Intentional: they'll be re-homed under a future Aviation-page component tree;
-// no ground vehicle needs the ungated ones.
+// The AVIATION parts (air_frame, wing, rotor, cockpit) gate on 'air_comp_<tier>_<part>' —
+// EXCEPT the LV air parts (air_frame/wing/cockpit): the aviation component tree starts at MV, so
+// there is no air_comp_lv_* node and those LV recipes are UNGATED (entry tier, fail open).
+// EVERY IV recipe (ground + air) gates on the single shared 'veh_iv' capstone node — one node
+// unlocks all six IV parts. It lives on the "Ground vehicles" tab and anyOf's any EV component
+// (ground or aviation), defined in wfcore/research/ground_vehicles.js.
 //
 // Each part is assembled from its tier's plate + a component-flavour ingredient. Only pure
 // gtceu:/minecraft:/wfcore: ids are used so these resolve in any instance. The per-part
@@ -27,8 +29,9 @@
 // the reduction targets the ingot value of a part, not its electronics/assembly.
 //
 // All item counts and fluid amounts below are pre-scaled (sc/scF already applied).
-// Ground parts gate on veh_comp_<tier>_<part>; aviation parts on air_comp_<tier>_<part>;
-// EVERY iv recipe gates on veh_iv (see header). Per-part circuit selector is tier-constant.
+// Ground parts gate on veh_comp_<tier>_<part>; aviation parts on air_comp_<tier>_<part> (no LV
+// aviation node exists → LV air parts ungated); EVERY iv recipe gates on veh_iv (see header).
+// Per-part circuit selector is tier-constant.
 
 const EUT = { lv: 32, mv: 128, hv: 512, ev: 2048, iv: 8192 } // tier voltage (NOT scaled)
 
@@ -94,7 +97,7 @@ ServerEvents.recipes(event => {
         .EUt(2048)
         .addCondition(WFResearch.condition('veh_comp_ev_vehicle_frame'))
 
-    // TIER_COST iv=2.2: sc(12)=26, sc(24)=53; scF(32*144)=10138; gates on veh_iv (FAIL OPEN)
+    // TIER_COST iv=2.2: sc(12)=26, sc(24)=53; scF(32*144)=10138; gates on veh_iv (IV capstone)
     event.recipes.gtceu.assembler('veh_iv_vehicle_frame')
         .itemInputs('26x gtceu:tungsten_steel_plate')
         .itemInputs('53x gtceu:double_tungsten_steel_plate')
@@ -118,7 +121,8 @@ ServerEvents.recipes(event => {
         .circuit(23)
         .duration(200)
         .EUt(32)
-        .addCondition(WFResearch.condition('air_comp_lv_air_frame'))
+        // UNGATED: no air_comp_lv_* research node exists (aviation component tree starts at MV);
+        // LV is the entry tier, so this fails open. Removing the dead condition unblocks the Ju-87 Stuka.
 
     // TIER_COST mv=1.25: sc(6)=8, sc(12)=15, sc(24)=30; scF(32*144)=5760
     event.recipes.gtceu.assembler('veh_mv_air_frame')
@@ -216,7 +220,7 @@ ServerEvents.recipes(event => {
         .EUt(2048)
         .addCondition(WFResearch.condition('veh_comp_ev_engine'))
 
-    // TIER_COST iv=2.2: sc(12)=26, sc(24)=53, sc(32)→min(64,70)=64, sc(16)=35, sc(18)=40; scF(8000)=17600; gates on veh_iv (FAIL OPEN)
+    // TIER_COST iv=2.2: sc(12)=26, sc(24)=53, sc(32)→min(64,70)=64, sc(16)=35, sc(18)=40; scF(8000)=17600; gates on veh_iv (IV capstone)
     event.recipes.gtceu.assembler('veh_iv_engine')
         .itemInputs('26x gtceu:hsse_gear')
         .itemInputs('53x gtceu:small_tungsten_steel_gear')
@@ -240,7 +244,7 @@ ServerEvents.recipes(event => {
         .circuit(31)
         .duration(200)
         .EUt(32)
-        .addCondition(WFResearch.condition('air_comp_lv_wing'))
+        // UNGATED: no air_comp_lv_* research node exists — LV entry tier fails open (see lv_air_frame).
 
     // TIER_COST mv=1.25: sc(12)=15; scF(16*144)=2880
     event.recipes.gtceu.assembler('veh_mv_wing')
@@ -275,7 +279,7 @@ ServerEvents.recipes(event => {
         .EUt(2048)
         .addCondition(WFResearch.condition('air_comp_ev_wing'))
 
-    // TIER_COST iv=2.2: sc(12)=26; scF(64*144)=20275; gates on veh_iv (FAIL OPEN)
+    // TIER_COST iv=2.2: sc(12)=26; scF(64*144)=20275; gates on veh_iv (IV capstone)
     event.recipes.gtceu.assembler('veh_iv_wing')
         .itemInputs('26x gtceu:double_tungsten_steel_plate')
         .itemInputs('26x gtceu:hsss_plate')
@@ -325,7 +329,7 @@ ServerEvents.recipes(event => {
         .circuit(31)
         .duration(200)
         .EUt(32)
-        .addCondition(WFResearch.condition('air_comp_lv_cockpit'))
+        // UNGATED: no air_comp_lv_* research node exists — LV entry tier fails open (see lv_air_frame).
 
     // TIER_COST mv=1.25: sc(64)=64, sc(16)=20, sc(32)=40; no fluid
     event.recipes.gtceu.assembler('veh_mv_cockpit')
@@ -360,7 +364,7 @@ ServerEvents.recipes(event => {
         .EUt(2048)
         .addCondition(WFResearch.condition('air_comp_ev_cockpit'))
 
-    // TIER_COST iv=2.2: sc(64)=64, sc(16)=35, sc(64)=64; no fluid; gates on veh_iv (FAIL OPEN)
+    // TIER_COST iv=2.2: sc(64)=64, sc(16)=35, sc(64)=64; no fluid; gates on veh_iv (IV capstone)
     event.recipes.gtceu.assembler('veh_iv_cockpit')
         .itemInputs('64x gtceu:laminated_glass')
         .itemInputs('35x #gtceu:circuits/iv')
@@ -424,7 +428,7 @@ ServerEvents.recipes(event => {
         .EUt(2048)
         .addCondition(WFResearch.condition('veh_comp_ev_track'))
 
-    // TIER_COST iv=2.2: sc(64)=64, sc(24)=53; no fluid; gates on veh_iv (FAIL OPEN)
+    // TIER_COST iv=2.2: sc(64)=64, sc(24)=53; no fluid; gates on veh_iv (IV capstone)
     event.recipes.gtceu.assembler('veh_iv_track')
         .itemInputs('64x gtceu:styrene_butadiene_rubber_plate')
         .itemInputs('53x gtceu:small_tungsten_steel_gear')
@@ -530,7 +534,7 @@ ServerEvents.recipes(event => {
         .EUt(2048)
         .addCondition(WFResearch.condition('veh_comp_ev_weapons_system'))
 
-    // TIER_COST iv=2.2: sc(24)=53, sc(16)=35, sc(12)=26, sc(32)→min(64,70)=64; no fluid; gates on veh_iv (FAIL OPEN)
+    // TIER_COST iv=2.2: sc(24)=53, sc(16)=35, sc(12)=26, sc(32)→min(64,70)=64; no fluid; gates on veh_iv (IV capstone)
     event.recipes.gtceu.assembler('veh_iv_weapons_system')
         .itemInputs('53x gtceu:tungsten_steel_plate')
         .itemInputs('35x #gtceu:circuits/iv')

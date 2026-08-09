@@ -20,7 +20,7 @@ ServerEvents.recipes(event => {
         event.remove({ output: 'superbwarfare:propeller' })
 
         event.recipes.gtceu.assembler("kubejs:small_propeller")
-        .itemInputs(Item.of('gtceu:polytetrafluoroethylene_plate',4))
+        .itemInputs(Item.of('gtceu:polyvinyl_chloride_plate',4))
         .itemInputs(Item.of('gtceu:carbon_fiber_plate',8))
         .inputFluids(Fluid.of('gtceu:glue',500))
         .itemOutputs(Item.of('superbwarfare:propeller', 1))

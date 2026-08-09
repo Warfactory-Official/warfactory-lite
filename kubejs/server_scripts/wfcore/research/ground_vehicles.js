@@ -384,4 +384,16 @@ ServerEvents.recipes(event => {
         .itemPerRun(Item.of('gtceu:titanium_plate', 4)).itemTagPerRun('gtceu:circuits/mv', 1)
         .unlock(Item.of('kubejs:ev_weapons_system')).icon(Item.of('kubejs:ev_weapons_system')).register()
 
+    WFResearch.builder('veh_iv')
+        .category('armor').pos(4, 4).nodeColor(BLUE)
+        .name('IV Components')
+        .description('Assembler blueprints for every IV-tier component: the IV vehicle frame, engine, track and weapons system, plus the IV aircraft wing and cockpit — the apex of the component lines.')
+        .anyOf('veh_comp_ev_vehicle_frame', 'veh_comp_ev_engine', 'veh_comp_ev_track', 'veh_comp_ev_cannon_barrel', 'veh_comp_ev_weapons_system',
+               'air_comp_ev_air_frame', 'air_comp_ev_wing', 'air_comp_ev_rotor', 'air_comp_ev_cockpit')
+        .runs(16).ticksPerRun(200).eut(EU_IV).cwuPerRun(819200)
+        .itemPerRun(Item.of('gtceu:tungsten_steel_plate', 4)).itemTagPerRun('gtceu:circuits/ev', 1)
+        .unlocks(Item.of('kubejs:iv_vehicle_frame'), Item.of('kubejs:iv_engine'), Item.of('kubejs:iv_track'),
+                 Item.of('kubejs:iv_weapons_system'), Item.of('kubejs:iv_wing'), Item.of('kubejs:iv_cockpit'))
+        .icon(Item.of('kubejs:iv_vehicle_frame')).register()
+
 })

@@ -12,7 +12,7 @@ ServerEvents.recipes(event => {
     // ---- Drilling (HV) ------------------------------------------------------
     // Drill Head: the consumable bit placed under the rig.
     g.assembler('wfcore:drill_head')
-        .itemInputs('4x gtceu:tungsten_carbide_plate', 'gtceu:steel_frame', '#gtceu:circuits/hv') // TODO
+        .itemInputs('4x gtceu:diamond_plate', 'gtceu:steel_frame', '#gtceu:circuits/hv') // TODO
         .itemOutputs('wfcore:drill_head').duration(300).EUt(HV)
     g.assembler('wfcore:drill_rig')
         .itemInputs('gtceu:hv_machine_casing', '4x gtceu:hv_electric_motor', '4x gtceu:steel_gearbox', '4x #gtceu:circuits/hv') // TODO
