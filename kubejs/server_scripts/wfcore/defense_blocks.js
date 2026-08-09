@@ -17,7 +17,7 @@ ServerEvents.recipes(event => {
 
     // --- Standard Concrete (LV) — poured concrete + steel rebar ---------------
     g.assembler('wfcore:standard_concrete')
-        .itemInputs('4x minecraft:light_gray_concrete', '4x gtceu:steel_rod') // TODO
+        .itemInputs('2x #forge:concretes', '2x gtceu:steel_rod') // TODO
         .itemOutputs('wfcore:standard_concrete')
         .duration(120).EUt(32)
 
@@ -30,7 +30,7 @@ ServerEvents.recipes(event => {
     // --- Reinforced Concrete (MV) — survives a portable charge ----------------
     // Reinforcement simplified to a single steel frame box (was 4x steel_plate + 2x steel_frame).
     g.assembler('wfcore:reinforced_concrete')
-        .itemInputs('4x wfcore:standard_concrete', '1x gtceu:steel_frame')
+        .itemInputs('1x wfcore:standard_concrete', '1x gtceu:steel_frame')
         .itemOutputs('wfcore:reinforced_concrete')
         .duration(200).EUt(120)
 
