@@ -121,6 +121,11 @@ ServerEvents.recipes(event => {
         .itemOutputs(Item.of('minecraft:string', 2))
         .chancedOutput(Item.of('minecraft:spider_eye', 1), 3300, 0)
 
+   event.recipes.wfcore.mob_farmer('kubejs:mob_squid')
+        .circuit(11)
+        .duration(400)
+        .EUt(120)
+        .itemOutputs(Item.of('minecraft:ink_sac', 4))
 
     event.recipes.wfcore.mob_farmer('kubejs:mob_enderman')
         .circuit(5)

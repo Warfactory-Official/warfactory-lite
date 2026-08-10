@@ -46,6 +46,10 @@ ServerEvents.recipes(event => {
     g.assembler('wfcore:helicopter_assembler')
         .itemInputs('gtceu:mv_machine_casing', '8x gtceu:steel_gearbox', '6x #gtceu:circuits/mv', '8x gtceu:magnalium_plate') // TODO
         .itemOutputs('wfcore:helicopter_assembler').duration(300).EUt(MV)
+    // Naval Vehicle Deployer (boat dock) = MV — builds the MV inflatable/gunboat + HV speedboat. Rubber-sealed hull.
+    g.assembler('wfcore:naval_vehicle_deployer')
+        .itemInputs('gtceu:mv_machine_casing', '6x gtceu:steel_gearbox', '6x #gtceu:circuits/mv', '8x gtceu:rubber_plate') // TODO
+        .itemOutputs('wfcore:naval_vehicle_deployer').duration(300).EUt(MV)
     g.assembler('wfcore:heavy_plane_assembler')
         .itemInputs('gtceu:ev_machine_casing', '8x #gtceu:circuits/ev', '8x gtceu:hssg_plate', 'gtceu:ev_emitter') // TODO
         .itemOutputs('wfcore:heavy_plane_assembler').duration(300).EUt(EV)

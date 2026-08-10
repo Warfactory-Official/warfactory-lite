@@ -406,4 +406,49 @@ ServerEvents.recipes(event => {
         r.EUt(28800).duration(13200);
         r.add(event);
     } catch (e) { console.warn('[WF] skipped vehicle recipe #20 (ashvehicle:b-2 @ heavy_plane_assembler): ' + e); }
+
+    // ── Naval Vehicle Deployer (boat dock) — boats reuse GROUND-vehicle components (no naval-specific parts).
+    //    Research graph in wfcore/research/naval.js: inflatable(MV) + speedboat(HV) -> gunboat(MV, anyOf).
+
+    // Speedboat — HV flagship: hull frame + engine + a .50-cal weapons station. tier=hv → EUt=1800, dur=9000.
+    try {
+        var r = WFVehicles.recipe('kubejs:veh_21', 'superbwarfare:speedboat', 'naval_vehicle_deployer');
+        r.item('kubejs:hv_vehicle_frame', 1);
+        r.item('kubejs:hv_engine', 1);
+        r.item('kubejs:hv_weapons_system', 1);
+        r.item('gtceu:gold_single_cable', 48);
+        r.tag('#gtceu:circuits/hv', 24);
+        r.circuit(1);
+        r.research('naval_speedboat');
+        r.EUt(1800).duration(9000);
+        r.add(event);
+    } catch (e) { console.warn('[WF] skipped vehicle recipe #21 (superbwarfare:speedboat @ naval_vehicle_deployer): ' + e); }
+
+    // Gunboat (tiny_speedboat) — MV: hull frame + engine + light weapons station. tier=mv → EUt=450, dur=500.
+    try {
+        var r = WFVehicles.recipe('kubejs:veh_22', 'superbwarfare:tiny_speedboat', 'naval_vehicle_deployer');
+        r.item('kubejs:mv_vehicle_frame', 1);
+        r.item('kubejs:mv_engine', 1);
+        r.item('kubejs:mv_weapons_system', 1);
+        r.item('gtceu:copper_single_cable', 32);
+        r.tag('#gtceu:circuits/mv', 8);
+        r.circuit(2);
+        r.research('naval_gunboat');
+        r.EUt(450).duration(500);
+        r.add(event);
+    } catch (e) { console.warn('[WF] skipped vehicle recipe #22 (superbwarfare:tiny_speedboat @ naval_vehicle_deployer): ' + e); }
+
+    // Inflatable Boat (ashvehicle) — MV, RUBBER-HEAVY: a full stack of rubber + a small outboard (mv_engine).
+    // tier=mv (mv_engine) → EUt=450, dur=500. Reuses the ground mv_engine; hull is the rubber itself.
+    try {
+        var r = WFVehicles.recipe('kubejs:veh_23', 'ashvehicle:rubber_boat', 'naval_vehicle_deployer');
+        r.item('gtceu:rubber_plate', 64);
+        r.item('kubejs:mv_engine', 1);
+        r.item('gtceu:copper_single_cable', 16);
+        r.tag('#gtceu:circuits/mv', 2);
+        r.circuit(3);
+        r.research('naval_inflatable');
+        r.EUt(450).duration(500);
+        r.add(event);
+    } catch (e) { console.warn('[WF] skipped vehicle recipe #23 (ashvehicle:rubber_boat @ naval_vehicle_deployer): ' + e); }
 });

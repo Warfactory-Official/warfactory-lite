@@ -31,6 +31,13 @@ ServerEvents.recipes(event => {
         .connectorColor(0xFF60C060)
         .register()
 
+    WFResearch.category('naval')
+        .name('Naval')
+        .icon(Item.of('wfcore:packaged_vehicle', '{entity:"superbwarfare:speedboat"}'))
+        .backgroundColor(0xFF101814)
+        .connectorColor(0xFF60C060)
+        .register()
+
     WFResearch.category('defense')
         .name('Emplacements')
         .icon(Item.of('superbwarfare:mortar_deployer'))
