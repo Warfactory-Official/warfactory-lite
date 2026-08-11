@@ -94,7 +94,7 @@ ServerEvents.recipes(event => {
     event.recipes.gtceu.assembler('ecwsmglvsmg_2')
         .itemInputs([Item.of('gtceu:steel_plate', 2), Item.of('kubejs:barrel_steel', 1), 'gtceu:small_steel_gear'])
         .itemOutputs(Item.of('tacz:modern_kinetic_gun', '{GunCurrentAmmoCount:2,GunId:"ww:mp38",HasBulletInBarrel:1b}'))
-        .circuit(22)
+        .circuit(27)
         .duration(20)
         .EUt(32)
         .addCondition(WFResearch.condition('inf_mp38'));
