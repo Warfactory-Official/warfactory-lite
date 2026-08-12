@@ -145,6 +145,6 @@ ServerEvents.recipes(event => {
     g.assembler('wfcore:satellite_distance_calibrator')
         .itemInputs('gtceu:hv_machine_casing', '1x gtceu:hv_sensor',  '4x #gtceu:circuits/hv', '4x gtceu:aluminium_frame', '2x wfcore:copper_network_cable')
         .circut(17)
-        .itemOutputs('wfcore:radar')
+        .itemOutputs('wfcore:satellite_distance_calibrator')
         .duration(200).EUt(HV) 
 })
