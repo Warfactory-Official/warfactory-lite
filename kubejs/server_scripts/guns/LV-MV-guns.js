@@ -267,4 +267,41 @@ ServerEvents.recipes(event => {
         .EUt(128)
         .addCondition(WFResearch.condition('inf_rpk'));
 
+
+//m700
+    event.remove({ output: Item.of('tacz:modern_kinetic_gun', '{GunCurrentAmmoCount:2,GunId:"tacz:m700",HasBulletInBarrel:1b}') });
+    event.recipes.gtceu.assembler('ecwrifles_mvsniper_0')
+        .itemInputs([Item.of('gtceu:aluminium_plate', 4), Item.of('kubejs:barrel_steel', 2), Item.of('gtceu:small_steel_spring', 5), Item.of('kubejs:stock_steel', 1)])
+        .itemOutputs(Item.of('tacz:modern_kinetic_gun', '{GunCurrentAmmoCount:2,GunId:"tacz:m700",HasBulletInBarrel:1b}'))
+        .circuit(1)
+        .duration(40)
+        .EUt(90)
+        .addCondition(WFResearch.condition('inf_m700'));
+//m107
+    event.remove({ output: Item.of('tacz:modern_kinetic_gun', '{GunCurrentAmmoCount:2,GunId:"tacz:m107",HasBulletInBarrel:1b}') });
+    event.recipes.gtceu.assembler('ecwrifles_mvsniper_1')
+        .itemInputs([Item.of('gtceu:aluminium_plate', 12), Item.of('kubejs:barrel_steel', 5), Item.of('gtceu:small_steel_spring', 5), Item.of('kubejs:stock_steel', 4)])
+        .itemOutputs(Item.of('tacz:modern_kinetic_gun', '{GunCurrentAmmoCount:2,GunId:"tacz:m107",HasBulletInBarrel:1b}'))
+        .circuit(1)
+        .duration(80)
+        .EUt(128)
+        .addCondition(WFResearch.condition('inf_m107'));
+//m95
+    event.remove({ output: Item.of('tacz:modern_kinetic_gun', '{GunCurrentAmmoCount:2,GunId:"tacz:m95",HasBulletInBarrel:1b}') });
+    event.recipes.gtceu.assembler('ecwrifles_mvsniper_2')
+        .itemInputs([Item.of('gtceu:aluminium_plate', 10), Item.of('kubejs:barrel_steel', 5), Item.of('gtceu:small_steel_spring', 6), Item.of('kubejs:stock_steel', 4)])
+        .itemOutputs(Item.of('tacz:modern_kinetic_gun', '{GunCurrentAmmoCount:2,GunId:"tacz:m95",HasBulletInBarrel:1b}'))
+        .circuit(2)
+        .duration(80)
+        .EUt(128)
+        .addCondition(WFResearch.condition('inf_m95'));
+//AWP
+    event.remove({ output: Item.of('tacz:modern_kinetic_gun', '{GunCurrentAmmoCount:2,GunId:"tacz:ai_awp",HasBulletInBarrel:1b}') });
+    event.recipes.gtceu.assembler('ecwrifles_mvsniper_3')
+        .itemInputs([Item.of('gtceu:aluminium_plate', 10), Item.of('kubejs:barrel_steel', 4), Item.of('gtceu:small_steel_spring', 6), Item.of('kubejs:stock_steel', 2)])
+        .itemOutputs(Item.of('tacz:modern_kinetic_gun', '{GunCurrentAmmoCount:2,GunId:"tacz:ai_awp",HasBulletInBarrel:1b}'))
+        .circuit(1)
+        .duration(100)
+        .EUt(128)
+        .addCondition(WFResearch.condition('inf_awm'));
 });
