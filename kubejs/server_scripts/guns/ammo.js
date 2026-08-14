@@ -567,7 +567,7 @@ ServerEvents.recipes(event => {
     // a magnesium proximity/tracer charge.
     event.recipes.gtceu.ammo_press('kubejs:ammo_small_shell_ap')
         .itemInputs(Item.of(CASING_STEEL, 2), Item.of('superbwarfare:ap_head', 1), Item.of('gtceu:small_gunpowder_dust', 2))
-        .itemOutputs(Item.of('superbwarfare:small_shell_ap', 2))
+        .itemOutputs(Item.of('superbwarfare:small_shell_ap', 32))
         .circuit(1)
         .duration(120)
         .EUt(128)
@@ -575,7 +575,7 @@ ServerEvents.recipes(event => {
 
     event.recipes.gtceu.ammo_press('kubejs:ammo_small_shell_he')
         .itemInputs(Item.of(CASING_STEEL, 2), Item.of('superbwarfare:he_head', 1), Item.of('gtceu:small_gunpowder_dust', 2))
-        .itemOutputs(Item.of('superbwarfare:small_shell_he', 2))
+        .itemOutputs(Item.of('superbwarfare:small_shell_he', 32))
         .circuit(2)
         .duration(120)
         .EUt(128)
@@ -583,7 +583,7 @@ ServerEvents.recipes(event => {
 
     event.recipes.gtceu.ammo_press('kubejs:ammo_small_shell_gs')
         .itemInputs(Item.of(CASING_STEEL, 2), Item.of('superbwarfare:gs_head', 1), Item.of('gtceu:small_gunpowder_dust', 2))
-        .itemOutputs(Item.of('superbwarfare:small_shell_gs', 2))
+        .itemOutputs(Item.of('superbwarfare:small_shell_gs', 32))
         .circuit(3)
         .duration(120)
         .EUt(128)
@@ -591,7 +591,7 @@ ServerEvents.recipes(event => {
 
     event.recipes.gtceu.ammo_press('kubejs:ammo_small_shell_aa')
         .itemInputs(Item.of(CASING_STEEL, 2), Item.of('superbwarfare:he_head', 1), Item.of('gtceu:small_gunpowder_dust', 2), Item.of('gtceu:magnesium_dust', 2))
-        .itemOutputs(Item.of('superbwarfare:small_shell_aa', 2))
+        .itemOutputs(Item.of('superbwarfare:small_shell_aa', 32))
         .circuit(4)
         .duration(120)
         .EUt(128)
