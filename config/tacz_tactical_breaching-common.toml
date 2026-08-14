@@ -71,7 +71,7 @@
 
 [shell_casings]
 	#Spawn visual shell casings when TaCZ guns fire.
-	enableShellCasings = true
+	enableShellCasings = false
 	#How long shell casings remain in ticks. 20 ticks = 1 second.
 	#Range: 20 ~ 2400
 	casingLifetime = 160
