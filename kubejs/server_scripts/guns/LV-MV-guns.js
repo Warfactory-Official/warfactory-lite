@@ -282,7 +282,7 @@ ServerEvents.recipes(event => {
     event.recipes.gtceu.assembler('ecwrifles_mvsniper_1')
         .itemInputs([Item.of('gtceu:aluminium_plate', 12), Item.of('kubejs:barrel_steel', 5), Item.of('gtceu:small_steel_spring', 5), Item.of('kubejs:stock_steel', 4)])
         .itemOutputs(Item.of('tacz:modern_kinetic_gun', '{GunCurrentAmmoCount:2,GunId:"tacz:m107",HasBulletInBarrel:1b}'))
-        .circuit(1)
+        .circuit(3)
         .duration(80)
         .EUt(128)
         .addCondition(WFResearch.condition('inf_m107'));
@@ -300,7 +300,7 @@ ServerEvents.recipes(event => {
     event.recipes.gtceu.assembler('ecwrifles_mvsniper_3')
         .itemInputs([Item.of('gtceu:aluminium_plate', 10), Item.of('kubejs:barrel_steel', 4), Item.of('gtceu:small_steel_spring', 6), Item.of('kubejs:stock_steel', 2)])
         .itemOutputs(Item.of('tacz:modern_kinetic_gun', '{GunCurrentAmmoCount:2,GunId:"tacz:ai_awp",HasBulletInBarrel:1b}'))
-        .circuit(1)
+        .circuit(4)
         .duration(100)
         .EUt(128)
         .addCondition(WFResearch.condition('inf_awm'));
